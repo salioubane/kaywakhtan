@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page d'accueil</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+    
+    form {
+      max-width: 300px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    
+    input[type="text"], input[type="email"] {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+    
+    #message {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #e2e2e2;
+      border-radius: 3px;
+    }
+    
+    #messages-container {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+    }
+    
+    .message {
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    
+    .message p {
+      margin: 0;
+    }
+  </style>
+  <script type="text/javascript">
+    // JavaScript code
+    function afficherMessage() {
+      var nom = document.getElementById("nom").value;
+      var message = "Bonjour, " + nom + "! Bienvenue sur kay mixer.";
+      document.getElementById("message").innerHTML = message;
+      
+      var email = document.getElementById("email").value;
+      if (email) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "envoyer-email.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("email=" + encodeURIComponent(email));
+      }
+    }
+    
+    function publierMessage() {
+      var contenu = document.getElementById("message-input").value;
+      var messageHtml = '<div class="message"><p>' + contenu + '</p></div>';
+      document.getElementById("messages-container").innerHTML += messageHtml;
+      document.getElementById("message-input").value = "";
+    }
+  </script>
+</head>
+<body>
+  <h1>Bienvenue sur kay mixer</h1>
+  
+  <form>
+    <label for="nom">Votre nom:</label>
+    <input type="text" id="nom" name="nom">
+    <label for="email">Votre adresse e-mail:</label>
+    <input type="email" id="email" name="email">
+    <button type="button" onclick="afficherMessage()">Afficher le message</button>
+  </form>
+  
+  <div id="messages-container">
+<h2>wakhtaanaaal</h2>
+<div id="messages-container"></div>
+<textarea id="message-input" placeholder="Écrivez votre message ici"></textarea>
+<button type="button" onclick="publierMessage()">Publier</button>
+
+  </div>
+</body>
+</html>
+
